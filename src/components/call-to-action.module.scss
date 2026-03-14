@@ -1,0 +1,266 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto;
+  gap: 0 4rem;
+  padding-block: 4rem 1rem;
+}
+
+.hand {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  grid-column-start: 1;
+  grid-row: span 2;
+}
+
+.span {
+  grid-column: 1 / -1;
+}
+
+.trading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.75rem;
+  padding-block: 2rem;
+  position: relative;
+
+  h1 {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.065ch;
+    font-size: 5rem;
+    color: var(--c-secondary);
+    line-height: 1;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--c-white);
+
+    span {
+      font-style: italic;
+      font-weight: 600;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem 1.2rem;
+  padding-block: 1.75rem 0;
+
+  button {
+    border: 2px solid transparent;
+    border-radius: 0.45em;
+    overflow: clip;
+  }
+}
+
+.regulated {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--c-white);
+  font-size: 1.4rem;
+  padding-inline: 1rem 0;
+  padding-block: 1rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--c-secondary);
+    line-height: 1;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 2.75rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--c-gold);
+  }
+
+  button {
+    margin-block: 1rem;
+  }
+
+  small {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--c-gray-500);
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  list-style: none;
+  font-size: 1.2rem;
+  padding-block: 1rem;
+
+  > * {
+    flex-basis: fit-content;
+  }
+}
+
+.tag {
+  --tag-color: var(--c-white);
+
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--tag-color);
+  border-radius: 0.45em;
+  padding: 0.25em 0.75em;
+}
+
+.orange {
+  --tag-color: var(--c-orange);
+}
+
+.secondary {
+  --tag-color: var(--c-secondary);
+}
+
+.red {
+  --tag-color: var(--c-red);
+}
+
+.matching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 1.4rem;
+  text-align: center;
+  margin-block: 4rem 6rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--c-secondary);
+    line-height: 1;
+    margin: 0;
+  }
+}
+
+.desc {
+  color: var(--c-gold);
+  font-weight: 600;
+  font-size: 1.5rem;
+  max-width: 70%;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding-block: 1.4rem;
+  color: var(--c-white);
+}
+
+.video {
+  border-radius: 0.8em;
+  overflow: clip;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1.5rem;
+  row-gap: 1rem;
+  text-align: start;
+  padding-inline: 2rem;
+  list-style: none;
+  font-weight: 500;
+
+  li::before {
+    content: '' / 'bullet';
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-image: url('/images/list-icon-69b3f19604161.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    transform: translateY(40%);
+  }
+}
+
+.analysis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 1.4rem;
+  text-align: center;
+  margin-block: 0 6rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--c-secondary);
+    line-height: 1;
+    margin: 0;
+  }
+}
+
+.function {
+  --height: 560px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(12, calc(var(--height) / 12));
+  align-content: center;
+  justify-items: center;
+  padding-block: 1.4rem;
+}
+
+.mobile {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+.f1 {
+  grid-column-start: 1;
+  grid-row: 1 / 4;
+}
+
+.f2 {
+  grid-column-start: 2;
+  grid-row: 3 / 5;
+}
+
+.f3 {
+  grid-column-start: 1;
+  grid-row: 5 / 8;
+}
+
+.f4 {
+  grid-column-start: 2;
+  grid-row: 7 / 10;
+}
+
+.f5 {
+  grid-column-start: 1;
+  grid-row: 10 / 12;
+}

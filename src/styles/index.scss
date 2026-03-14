@@ -1,0 +1,188 @@
+@use 'reset.scss';
+@use 'normalize.scss';
+
+// variables
+:root {
+  // variants
+  --c-primary: oklch(37.107% 0.24702 264.662);
+  --c-secondary: oklch(87.028% 0.14851 194.808);
+  --c-gold: oklab(89.833% -0.0195 0.12315);
+  --c-orange: oklch(69.729% 0.18222 50.236);
+  --c-header: oklch(28.598% 0.07152 257.326);
+  --c-bg: oklch(48.325% 0.16481 269.083);
+  --c-white: oklch(100% 0.00011 271.152);
+  --c-red: oklch(55.973% 0.18695 11.765);
+  --c-gray: oklch(0.9173 0.0027 84.56);
+  --c-slate: oklch(55.4% 0.046 257.417);
+  --c-text: hsla(0, 0%, 0%, 0.81);
+
+  // mix
+  --c-mix-hover: #000 10%;
+  --c-mix-active: #000 20%;
+  --c-mix-trans: transparent 20%;
+  --c-mix-disab: transparent 40%;
+
+  // gray
+  --c-gray-50: oklch(from var(--c-gray) 95% c h);
+  --c-gray-100: oklch(from var(--c-gray) 90% c h);
+  --c-gray-200: oklch(from var(--c-gray) 82% c h);
+  --c-gray-300: oklch(from var(--c-gray) 74% c h);
+  --c-gray-400: oklch(from var(--c-gray) 68% c h);
+  --c-gray-500: var(--c-gray);
+  --c-gray-600: oklch(from var(--c-gray) 56% c h);
+  --c-gray-700: oklch(from var(--c-gray) 48% c h);
+  --c-gray-800: oklch(from var(--c-gray) 40% c h);
+  --c-gray-900: oklch(from var(--c-gray) 30% c h);
+  --c-gray-950: oklch(from var(--c-gray) 22% c h);
+
+  // slate
+  --c-slate-50: oklch(from var(--c-slate) 95% c h);
+  --c-slate-100: oklch(from var(--c-slate) 90% c h);
+  --c-slate-200: oklch(from var(--c-slate) 82% c h);
+  --c-slate-300: oklch(from var(--c-slate) 74% c h);
+  --c-slate-400: oklch(from var(--c-slate) 68% c h);
+  --c-slate-500: var(--c-slate);
+  --c-slate-600: oklch(from var(--c-slate) 56% c h);
+  --c-slate-700: oklch(from var(--c-slate) 48% c h);
+  --c-slate-800: oklch(from var(--c-slate) 40% c h);
+  --c-slate-900: oklch(from var(--c-slate) 30% c h);
+  --c-slate-950: oklch(from var(--c-slate) 22% c h);
+}
+
+// main
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  font-family: var(--font-atrotis-semi-sans), system-ui, sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings:
+    'SOFT' 0,
+    'WONK' 0;
+  color: var(--c-text);
+  accent-color: var(--c-primary);
+  background-color: var(--c-bg);
+
+  // fix full bleed image overflow
+  overflow-x: clip;
+}
+
+::selection,
+::-moz-selection {
+  background: var(--c-slate);
+  text-shadow: none;
+}
+
+// components
+.button {
+  --bg-color: var(--c-primary);
+  --bg-color-hover: color-mix(in oklab, var(--bg-color), var(--c-mix-hover));
+  --bg-color-active: color-mix(in oklab, var(--bg-color), var(--c-mix-active));
+  --color: var(--c-white);
+  --gap: 0.4em;
+  --padding-block: 0.475em;
+  --padding-inline: 1.1em;
+  --border-color: transparent;
+  --border-radius: 0.45em;
+
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--color);
+  display: inline-flex;
+  gap: var(--gap);
+  padding-block: var(--padding-block);
+  padding-inline: var(--padding-inline);
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-decoration: none;
+  font-weight: 800;
+  line-height: normal;
+  transition: background-color 200ms;
+
+  &[type='button'] {
+    cursor: pointer;
+  }
+
+  &:is(:hover, :focus-visible) {
+    background-color: var(--bg-color-hover);
+  }
+
+  &:active {
+    background-color: var(--bg-color-active);
+  }
+
+  &:disabled {
+    --opacity: 0.7;
+
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: var(--opacity);
+    pointer-events: none;
+  }
+
+  &.outlined {
+    --border-color: var(--bg-color);
+    background-color: transparent;
+    color: var(--bg-color);
+
+    &:hover {
+      background-color: var(--bg-color-hover);
+      color: var(--c-w);
+    }
+  }
+}
+
+// styles
+.layout {
+  --gap: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr min(#{$xxl}, 100% - var(--gap) * 2) 1fr;
+  grid-column-gap: var(--gap);
+}
+
+.layout > * {
+  grid-column: 2;
+}
+
+.layout > .full-width {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: inherit;
+
+  & > * {
+    grid-column: 2;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: var(--c-text);
+  border: 1.6px solid var(--c-white);
+  padding: 8px;
+  border-radius: 50%;
+}
+
+// utils
+.button-only {
+  all: unset;
+  outline: revert;
+  cursor: pointer;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}

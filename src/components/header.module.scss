@@ -1,0 +1,19 @@
+.header {
+  background-color: var(--c-header);
+  padding-block: 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  color: var(--c-white);
+}
+
+.wrapper {
+  grid-column: content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}

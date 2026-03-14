@@ -1,0 +1,81 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  margin-block: 4rem 6rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--c-secondary);
+    line-height: 1;
+    margin: 0;
+  }
+}
+
+.group {
+  --selected-color: var(--c-gold);
+
+  display: flex;
+  flex-direction: column;
+  padding-block: 2.5rem 2rem;
+}
+
+.tablist {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  padding: 0 1rem;
+  background-color: var(--c-white);
+  border-radius: 0.8em 0.8em 0 0;
+  border: none;
+  outline: none;
+}
+
+.selected {
+  background-color: var(--selected-color);
+}
+
+.panel {
+  background-color: var(--selected-color);
+  border-radius: 0 0.8em 0.8em;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+  padding-block: 2rem 0;
+  padding-inline: 4rem 0;
+}
+
+.desc {
+  justify-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  text-align: start;
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--c-primary);
+  }
+}
+
+.buttons {
+  align-self: center;
+  display: flex;
+  gap: 0.75rem 1.2rem;
+
+  button {
+    border: 2px solid transparent;
+    border-radius: 0.45em;
+    overflow: clip;
+  }
+}
