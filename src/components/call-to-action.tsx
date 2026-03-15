@@ -3,18 +3,35 @@ import { RegisterButton } from './ui/register-button';
 import styles from './call-to-action.module.scss';
 import clsx from 'clsx';
 import { SectionTitle } from './ui/section-title';
+import * as motion from 'motion/react-client';
 
 export function CallToAction() {
+  const features = [
+    'Spotlight',
+    'Top Startegies',
+    'Low Drawdown',
+    'Medium Drawdown',
+    'High Drawdown',
+    'New Startegies',
+  ];
+
   return (
     <div className={styles.main}>
-      <Image
-        src='/images/hand-69b3f19568586.webp'
+      <motion.div
         className={styles.hand}
-        alt='hands on Blackwell Invest'
-        width={1000}
-        height={1166}
-        priority
-      />
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <Image
+          src='/images/hand-69b3f19568586.webp'
+          alt='hands on Blackwell Invest'
+          width={1000}
+          height={1166}
+          priority
+        />
+      </motion.div>
       <section className={styles.trading}>
         <Image
           src='/images/regular-69b3f198e3e73.webp'
@@ -81,14 +98,38 @@ export function CallToAction() {
               width={320}
             ></video>
           </div>
-          <ul className={styles.list}>
-            <li>Spotlight</li>
-            <li>Top Startegies</li>
-            <li>Low Drawdown</li>
-            <li>Medium Drawdown</li>
-            <li>High Drawdown</li>
-            <li>New Startegies</li>
-          </ul>
+          <motion.ul
+            className={styles.list}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  duration: 0.6,
+                  delayChildren: 0.2,
+                },
+              },
+            }}
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {features.map((feature) => (
+              <motion.li
+                key={feature}
+                variants={{
+                  hidden: { opacity: 0, x: 100 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { type: 'tween' },
+                  },
+                }}
+              >
+                {feature}
+              </motion.li>
+            ))}
+          </motion.ul>
         </div>
       </section>
       <section className={styles.analysis}>
@@ -105,41 +146,76 @@ export function CallToAction() {
             height={560}
             alt='analysis showcase'
           />
-          <Image
-            src='/images/function-1-69b3f05231e5d.webp'
+          <motion.div
             className={styles.f1}
-            width={260}
-            height={180}
-            alt='function-1'
-          />
-          <Image
-            src='/images/function-2-69b3f0514171b.webp'
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src='/images/function-1-69b3f05231e5d.webp'
+              width={260}
+              height={180}
+              alt='function-1'
+            />
+          </motion.div>
+          <motion.div
             className={styles.f2}
-            width={260}
-            height={140}
-            alt='function-2'
-          />
-          <Image
-            src='/images/function-3-69b3f052953f0.webp'
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src='/images/function-2-69b3f0514171b.webp'
+              width={260}
+              height={140}
+              alt='function-2'
+            />
+          </motion.div>
+          <motion.div
             className={styles.f3}
-            width={260}
-            height={140}
-            alt='function-3'
-          />
-          <Image
-            src='/images/function-4-69b3f053a307e.webp'
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src='/images/function-3-69b3f052953f0.webp'
+              width={260}
+              height={140}
+              alt='function-3'
+            />
+          </motion.div>
+          <motion.div
             className={styles.f4}
-            width={260}
-            height={200}
-            alt='function-4'
-          />
-          <Image
-            src='/images/function-5-69b3f053ab34d.webp'
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src='/images/function-4-69b3f053a307e.webp'
+              width={260}
+              height={200}
+              alt='function-4'
+            />
+          </motion.div>
+          <motion.div
             className={styles.f5}
-            width={260}
-            height={160}
-            alt='function-5'
-          />
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src='/images/function-5-69b3f053ab34d.webp'
+              width={260}
+              height={160}
+              alt='function-5'
+            />
+          </motion.div>
         </div>
       </section>
     </div>

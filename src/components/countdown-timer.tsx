@@ -2,12 +2,15 @@
 
 import styles from './countdown-timer.module.scss';
 import { useState, useEffect } from 'react';
+import NumberFlow, { Format } from '@number-flow/react';
 
 type Props = {
   countdownDate: Date | string;
 };
 
 export function CountdownTimer({ countdownDate }: Props) {
+  const format: Format = { minimumIntegerDigits: 2, useGrouping: false };
+
   const [timer, setTimer] = useState({
     days: 0,
     hours: 0,
@@ -38,38 +41,47 @@ export function CountdownTimer({ countdownDate }: Props) {
     return () => clearInterval(interval);
   }, [countdownDate]);
 
-  // use browser default locale
-  const formatNumber = (num: number) =>
-    num.toLocaleString(undefined, {
-      minimumIntegerDigits: 2,
-      useGrouping: false,
-    });
-
   return (
     <div className={styles.timer}>
       <div className={styles.part}>
-        <span className={styles.number}>{formatNumber(timer.days)}</span>
+        <NumberFlow
+          className={styles.number}
+          format={format}
+          value={timer.days}
+        />
         <small className={styles.unit}>Days</small>
       </div>
       <div className={styles.dot} aria-hidden={true}>
         :
       </div>
       <div className={styles.part}>
-        <span className={styles.number}>{formatNumber(timer.hours)}</span>
+        <NumberFlow
+          className={styles.number}
+          format={format}
+          value={timer.hours}
+        />
         <small className={styles.unit}>Hours</small>
       </div>
       <div className={styles.dot} aria-hidden={true}>
         :
       </div>
       <div className={styles.part}>
-        <span className={styles.number}>{formatNumber(timer.minutes)}</span>
+        <NumberFlow
+          className={styles.number}
+          format={format}
+          value={timer.minutes}
+        />
         <small className={styles.unit}>Minutes</small>
       </div>
       <div className={styles.dot} aria-hidden={true}>
         :
       </div>
       <div className={styles.part}>
-        <span className={styles.number}>{formatNumber(timer.seconds)}</span>
+        <NumberFlow
+          className={styles.number}
+          format={format}
+          value={timer.seconds}
+        />
         <small className={styles.unit}>Seconds</small>
       </div>
     </div>

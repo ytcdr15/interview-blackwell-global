@@ -49,6 +49,7 @@
   align-items: center;
   justify-items: center;
   padding-block: 2rem 0;
+  overflow: clip;
 
   @include mq-lg {
     border-radius: 0 0.8em 0.8em;

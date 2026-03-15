@@ -6,6 +6,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { Fragment } from 'react/jsx-runtime';
 import clsx from 'clsx';
 import { SectionTitle } from './ui/section-title';
+import { motion } from 'motion/react';
 
 export function NavigateAppIntroduce() {
   return (
@@ -154,12 +155,19 @@ export function NavigateAppIntroduce() {
                 at a glance.
               </p>
             </div>
-            <Image
-              src='/images/reason-1-69b3f0ca649b0.webp'
-              width={540}
-              height={400}
-              alt='navigate-1'
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src='/images/reason-1-69b3f0ca649b0.webp'
+                width={540}
+                height={400}
+                alt='navigate-1'
+              />
+            </motion.div>
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
@@ -171,12 +179,19 @@ export function NavigateAppIntroduce() {
                 trades shaping your portfolio.
               </p>
             </div>
-            <Image
-              src='/images/reason-2-69b3f0ca686c5.webp'
-              width={540}
-              height={400}
-              alt='navigate-2'
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src='/images/reason-2-69b3f0ca686c5.webp'
+                width={540}
+                height={400}
+                alt='navigate-2'
+              />
+            </motion.div>
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
@@ -186,12 +201,19 @@ export function NavigateAppIntroduce() {
                 ease.{' '}
               </p>
             </div>
-            <Image
-              src='/images/reason-3-69b3f0cb8770f.webp'
-              width={600}
-              height={400}
-              alt='navigate-3'
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src='/images/reason-3-69b3f0cb8770f.webp'
+                width={600}
+                height={400}
+                alt='navigate-3'
+              />
+            </motion.div>
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
@@ -201,12 +223,19 @@ export function NavigateAppIntroduce() {
                 account metrics in real-time.{' '}
               </p>
             </div>
-            <Image
-              src='/images/reason-4-69b3f0cba4bc6.webp'
-              width={600}
-              height={400}
-              alt='navigate-4'
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src='/images/reason-4-69b3f0cba4bc6.webp'
+                width={600}
+                height={400}
+                alt='navigate-4'
+              />
+            </motion.div>
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
@@ -217,12 +246,19 @@ export function NavigateAppIntroduce() {
                 track of your trade performance - all in one place!
               </p>
             </div>
-            <Image
-              src='/images/reason-5-69b3f0ccba411.webp'
-              width={600}
-              height={400}
-              alt='navigate-5'
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src='/images/reason-5-69b3f0ccba411.webp'
+                width={600}
+                height={400}
+                alt='navigate-5'
+              />
+            </motion.div>
           </TabPanel>
         </TabPanels>
       </TabGroup>
