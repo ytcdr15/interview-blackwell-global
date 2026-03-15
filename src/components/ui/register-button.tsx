@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import styles from './register-button.module.scss';
+import { ComponentPropsWithoutRef } from 'react';
 
-type Props = {
+type Props = ComponentPropsWithoutRef<'button'> & {
   text?: string;
   variant?: 'default' | 'pill';
 };

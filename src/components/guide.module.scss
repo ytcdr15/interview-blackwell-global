@@ -7,31 +7,93 @@
 }
 
 .content {
-  padding-top: 24rem;
+  padding-top: clamp(6rem, 20vw, 10rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   text-align: center;
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--c-secondary);
-    line-height: 1;
-    margin: 0;
+  @include mq-md {
+    padding-top: 12rem;
   }
+
+  @include mq-lg {
+    padding-top: 14rem;
+  }
+
+  @include mq-xl {
+    padding-top: 16rem;
+  }
+
+  @include mq-2xl {
+    padding-top: 18rem;
+  }
+
+  @include mq-3xl {
+    padding-top: 24rem;
+  }
+}
+.accordion {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding-block: 2.5rem 2rem;
+  font-size: 1.2rem;
+
+  @include mq-md {
+    padding-block: 2.5rem 2rem;
+    font-size: 1.5rem;
+  }
+
+  @include mq-lg {
+    display: none;
+  }
+}
+
+.border {
+  border-width: 2px;
+  border-style: solid;
+  border-color: currentColor;
+  border-radius: 0.65rem;
+  color: var(--c-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 1em;
+  font-weight: 600;
+}
+
+.disbutton {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1.4rem;
+
+  @include mq-md {
+    padding-block: 1.4rem;
+    padding-inline: 1.75rem;
+  }
+}
+
+.image {
+  margin-block: 0 1rem;
 }
 
 .group {
   --selected-color: var(--c-orange);
 
-  display: grid;
+  display: none;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
   align-items: stretch;
   gap: 1rem;
   padding-block: 2.5rem 2rem;
+
+  @include mq-lg {
+    display: grid;
+  }
 }
 
 .guide {
@@ -52,20 +114,35 @@
 }
 
 .tab {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.button {
   border-width: 2px;
   border-style: solid;
   border-color: currentColor;
   border-radius: 0.65rem;
   background-color: transparent;
-  font-size: 1.65rem;
+  font-size: 1.1rem;
   color: var(--c-white);
   padding-inline: 2rem;
   display: flex;
   align-items: center;
   justify-items: stretch;
+  column-gap: 1em;
   font-weight: 600;
   flex-grow: 1;
   outline: none;
+
+  @include mq-md {
+    font-size: 1.4rem;
+  }
+
+  @include mq-lg {
+    font-size: 1.65rem;
+  }
 }
 
 .text {
@@ -73,7 +150,7 @@
 }
 
 .marker {
-  font-size: 3rem;
+  font-size: 1.75em;
   line-height: 1;
   flex-grow: 0;
   font-style: italic;
@@ -84,6 +161,7 @@
 }
 
 .buttons {
+  align-self: center;
   display: flex;
   gap: 0.75rem 1.2rem;
 

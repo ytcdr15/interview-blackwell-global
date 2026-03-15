@@ -3,14 +3,6 @@
   margin-block: 6rem;
   font-size: 1.4rem;
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--c-secondary);
-    line-height: 1;
-    margin: 0;
-  }
-
   button {
     font-size: 1.275rem;
   }
@@ -29,40 +21,55 @@
 }
 
 .slide {
+  // override swiper css
+  height: auto !important;
   display: flex !important;
+  justify-content: center;
+  padding-inline: 2rem;
+
+  &:not([data-index='1']) .card::before {
+    content: '' / 'arrow-next';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -20%;
+    transform: translateY(-50%);
+
+    @include mq-md {
+      width: 5em;
+      height: 5em;
+      background-image: url('/images/arrow-69b3f1918966f.webp');
+      background-color: var(--c-bg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  @include mq-md {
+    width: min(100%, 30ch) !important;
+    padding: 0;
+  }
+}
+
+.card {
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   row-gap: 0.75rem;
   font-weight: 600;
-  width: 28ch;
+  width: min(100%, 27ch);
   color: var(--c-white);
-  padding: 2rem 1.5rem;
+  padding: 2rem 1rem;
   border-width: 2px;
   border-style: solid;
   border-color: var(--c-orange);
   border-radius: 0.8em;
   position: relative;
-  // override swiper css
-  height: auto !important;
 
-  &:not(:first-child):before {
-    content: '' / 'arrow-next';
-    display: block;
-    position: absolute;
-    width: 5em;
-    height: 5em;
-    background-image: url('/images/arrow-69b3f1918966f.webp');
-    background-color: var(--c-bg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 50%;
-    left: -22%;
-    transform: translateY(-50%);
-  }
-
-  img {
-    z-index: 1;
+  @include mq-md {
+    width: auto;
+    padding: 2rem 1.5rem;
   }
 }

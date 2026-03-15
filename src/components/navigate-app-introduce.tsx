@@ -5,11 +5,12 @@ import styles from './navigate-app-introduce.module.scss';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { Fragment } from 'react/jsx-runtime';
 import clsx from 'clsx';
+import { SectionTitle } from './ui/section-title';
 
 export function NavigateAppIntroduce() {
   return (
     <section className={styles.section}>
-      <h1>Navigate Our App in 5 Clicks</h1>
+      <SectionTitle>Navigate Our App in 5 Clicks</SectionTitle>
       <TabGroup className={styles.group}>
         <TabList className={styles.tablist}>
           <Tab as={Fragment}>

@@ -3,27 +3,46 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+
   padding-bottom: 6rem;
   margin-block: 2rem 0;
 }
 
 .form {
-  padding-top: 20rem;
+  padding-top: clamp(8rem, 20vw, 10rem);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   justify-items: center;
   gap: 1.4rem 1rem;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-block: 0 4rem;
 
   h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--c-secondary);
-    line-height: 1;
-    margin: 0;
     margin-bottom: 1rem;
+  }
+
+  @include mq-md {
+    padding-top: 12rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 1.275rem;
+  }
+
+  @include mq-lg {
+    padding-top: 14rem;
+  }
+
+  @include mq-xl {
+    padding-top: 16rem;
+    font-size: 1.4rem;
+  }
+
+  @include mq-2xl {
+    padding-top: 18rem;
+  }
+
+  @include mq-3xl {
+    padding-top: 20rem;
   }
 }
 
@@ -32,7 +51,7 @@
 }
 
 .input {
-  --b-width: 1px;
+  --b-width: 2px;
   --b-color: var(--c-gray-500);
   --b-style: solid;
   --b-radius: 0.45em;

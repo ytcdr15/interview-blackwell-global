@@ -7,20 +7,33 @@
 }
 
 .content {
-  padding-top: 20rem;
+  padding-top: clamp(6rem, 20vw, 10rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 1.275rem;
+  font-size: 1.2rem;
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--c-secondary);
-    line-height: 1;
-    margin: 0;
+  @include mq-md {
+    padding-top: 12rem;
+    font-size: 1.275rem;
+  }
+
+  @include mq-lg {
+    padding-top: 14rem;
+  }
+
+  @include mq-xl {
+    padding-top: 16rem;
+  }
+
+  @include mq-2xl {
+    padding-top: 18rem;
+  }
+
+  @include mq-3xl {
+    padding-top: 20rem;
   }
 }
 
@@ -35,25 +48,50 @@
 
   li {
     background-color: var(--c-white);
-    padding: 1rem 1.8rem;
+    padding: 0.5rem 1.5rem 1.5rem;
     display: grid;
-    grid-template-columns: auto 1fr 2fr;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.5rem;
     align-items: center;
     border-radius: 0.8em;
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var(--c-primary);
     font-weight: 800;
+    justify-self: flex-start;
   }
 
   p {
     text-align: left;
+    grid-column: 1 / -1;
+  }
+
+  @include mq-md {
+    li {
+      grid-template-columns: auto 1fr 2fr;
+      padding: 1rem 1.8rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      justify-self: auto;
+    }
+
+    p {
+      grid-column: auto;
+    }
   }
 }
 
 .icon {
-  aspect-ratio: 1 / 1;
   flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+
+  @include mq-md {
+    width: auto;
+    height: auto;
+  }
 }

@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { RegisterButton } from './register-button';
+import { RegisterButton } from './ui/register-button';
 import styles from './call-to-action.module.scss';
 import clsx from 'clsx';
+import { SectionTitle } from './ui/section-title';
 
 export function CallToAction() {
   return (
@@ -11,14 +12,10 @@ export function CallToAction() {
         className={styles.hand}
         alt='hands on Blackwell Invest'
         width={1000}
-        height={1100}
+        height={1166}
         priority
       />
       <section className={styles.trading}>
-        <h1>Copy Trading</h1>
-        <h2>
-          with <span>Blackwell Invest</span>
-        </h2>
         <Image
           src='/images/regular-69b3f198e3e73.webp'
           className={styles.regulated}
@@ -26,6 +23,10 @@ export function CallToAction() {
           width={180}
           height={170}
         />
+        <h1>Copy Trading</h1>
+        <h2>
+          with <span>Blackwell Invest</span>
+        </h2>
         <div className={styles.buttons}>
           <button type='button' className='button-only'>
             <Image
@@ -62,8 +63,8 @@ export function CallToAction() {
         <RegisterButton />
         <small>When you invest, your capital is at risk. Be prudent.</small>
       </section>
-      <section className={clsx(styles.matching, styles.span)}>
-        <h1>Fast Matching</h1>
+      <section className={styles.matching}>
+        <SectionTitle>Fast Matching</SectionTitle>
         <p className={styles.desc}>
           Zero in on your ideal Master effortlessly. Sort by performance and
           drawdown levels or discover opportunities from new signals with our
@@ -90,8 +91,8 @@ export function CallToAction() {
           </ul>
         </div>
       </section>
-      <section className={clsx(styles.analysis, styles.span)}>
-        <h1>Easy Analysis</h1>
+      <section className={styles.analysis}>
+        <SectionTitle>Easy Analysis</SectionTitle>
         <p className={styles.desc}>
           Instant clarity on the Masters&apos; profile. Get a snapshot of their
           trade history, profitability, risk, and portfolio all in one place.

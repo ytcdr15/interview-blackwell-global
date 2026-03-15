@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import styles from './choose-us.module.scss';
 import clsx from 'clsx';
-import { RegisterButton } from './register-button';
+import { RegisterButton } from './ui/register-button';
+import { SectionTitle } from './ui/section-title';
 
 export function ChooseUs() {
   return (
     <section className={clsx(styles.section, 'full-width')}>
       <div className={styles.content}>
-        <h1>Why Choose Us?</h1>
+        <SectionTitle>Why Choose Us?</SectionTitle>
         <ul className={styles.reason}>
           <li>
             <Image

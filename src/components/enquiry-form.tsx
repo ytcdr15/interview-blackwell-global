@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import styles from './enquiry-form.module.scss';
+import { SectionTitle } from './ui/section-title';
 
 export function EnquiryForm() {
   return (
     <section className={clsx(styles.section, 'full-width')}>
       <form action='#enquiry' method='post' className={styles.form}>
-        <h1 className={styles.span}>Enquire Now</h1>
+        <SectionTitle className={styles.span}>Enquire Now</SectionTitle>
         <label className={styles.label}>
           <input
             type='text'

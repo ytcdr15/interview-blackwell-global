@@ -1,0 +1,11 @@
+.h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--c-secondary);
+  line-height: 1;
+  margin: 0;
+
+  @include mq-md {
+    font-size: 3rem;
+  }
+}

@@ -5,14 +5,6 @@
   justify-content: center;
   text-align: center;
   margin-block: 4rem 6rem;
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--c-secondary);
-    line-height: 1;
-    margin: 0;
-  }
 }
 
 .group {
@@ -34,6 +26,15 @@
   border-radius: 0.8em 0.8em 0 0;
   border: none;
   outline: none;
+
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mq-md {
+    flex-grow: 0;
+  }
 }
 
 .selected {
@@ -42,29 +43,47 @@
 
 .panel {
   background-color: var(--selected-color);
-  border-radius: 0 0.8em 0.8em;
+  border-radius: 0 0 0.8em 0.8em;
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
-  gap: 1rem;
   padding-block: 2rem 0;
-  padding-inline: 4rem 0;
+
+  @include mq-lg {
+    border-radius: 0 0.8em 0.8em;
+    grid-template-columns: 4fr minmax(540px, 3fr);
+    padding-inline: 4rem 0;
+  }
 }
 
 .desc {
   justify-self: flex-start;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 0.5rem;
   text-align: start;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
+  padding-inline: 2rem;
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: var(--c-primary);
+  }
+
+  @include mq-md {
+    font-size: 1.4rem;
+    row-gap: 1rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  @include mq-lg {
+    padding-inline: 0;
   }
 }
 

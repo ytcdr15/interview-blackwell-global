@@ -6,14 +6,34 @@
 }
 
 .wrapper {
-  grid-column: content;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .account {
-  display: flex;
+  display: none;
   align-items: center;
   column-gap: 1rem;
+}
+
+.countdown {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  align-self: center;
+}
+
+@include mq-lg {
+  .countdown,
+  .account {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    display: none;
+  }
 }

@@ -65,6 +65,7 @@ body {
   color: var(--c-text);
   accent-color: var(--c-primary);
   background-color: var(--c-bg);
+  text-underline-offset: 0.1em;
 
   // fix full bleed image overflow
   overflow-x: clip;
@@ -150,15 +151,19 @@ body {
   grid-column: 2;
 }
 
-.layout > .full-width {
+.full-width {
   grid-column: 1 / -1;
 
   display: grid;
   grid-template-columns: inherit;
 
-  & > * {
+  > * {
     grid-column: 2;
   }
+}
+
+.span {
+  grid-column: 1 / -1;
 }
 
 .swiper-button-next,

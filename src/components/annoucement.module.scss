@@ -1,0 +1,14 @@
+.annoucement {
+  --bg-color: #2196f3;
+
+  background-color: var(--bg-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  color: var(--c-white);
+  padding: 0.4rem;
+  text-align: center;
+
+  a {
+    color: currentColor;
+  }
+}
