@@ -19,7 +19,9 @@ export function CountdownTimer({ countdownDate }: Props) {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    let interval: ReturnType<typeof setInterval> | undefined;
+
+    const updateTimer = () => {
       const now = new Date().getTime();
       const distance = new Date(countdownDate).getTime() - now;
 
@@ -36,7 +38,13 @@ export function CountdownTimer({ countdownDate }: Props) {
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
       }
-    });
+    };
+
+    // initial run
+    updateTimer();
+
+    // interval run
+    interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
   }, [countdownDate]);

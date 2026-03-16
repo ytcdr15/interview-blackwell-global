@@ -198,7 +198,7 @@ export function NavigateAppIntroduce() {
               <h2>Trade</h2>
               <p>
                 Seamlessly trade oil CFDs, indices, and currency pairs with
-                ease.{' '}
+                ease.
               </p>
             </div>
             <motion.div
@@ -220,7 +220,7 @@ export function NavigateAppIntroduce() {
               <h2>Positions</h2>
               <p>
                 Easily track the status of all your trades and monitor your
-                account metrics in real-time.{' '}
+                account metrics in real-time.
               </p>
             </div>
             <motion.div

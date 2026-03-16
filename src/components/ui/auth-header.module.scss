@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--c-header);
+  padding-block: 1rem;
+  color: var(--c-white);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

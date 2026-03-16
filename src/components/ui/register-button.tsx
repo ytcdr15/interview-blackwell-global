@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import styles from './register-button.module.scss';
 import { ComponentPropsWithoutRef } from 'react';
+import Link from 'next/link';
 
 type Props = ComponentPropsWithoutRef<'button'> & {
   text?: string;
@@ -12,13 +13,13 @@ export function RegisterButton({
   variant = 'default',
 }: Props) {
   return (
-    <button
-      type='button'
+    <Link
+      href='/register'
       className={clsx('button', styles.button, {
         [styles.pill]: variant === 'pill',
       })}
     >
       {text}
-    </button>
+    </Link>
   );
 }

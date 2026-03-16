@@ -66,6 +66,8 @@ body {
   accent-color: var(--c-primary);
   background-color: var(--c-bg);
   text-underline-offset: 0.1em;
+  min-height: 100vh;
+  min-height: 100dvh;
 
   // fix full bleed image overflow
   overflow-x: clip;
@@ -98,6 +100,7 @@ body {
   padding-block: var(--padding-block);
   padding-inline: var(--padding-inline);
   text-align: center;
+  align-items: center;
   justify-content: center;
   vertical-align: middle;
   text-decoration: none;
@@ -138,13 +141,38 @@ body {
   }
 }
 
+.input {
+  --b-width: 2px;
+  --b-color: var(--c-gray-500);
+  --b-style: solid;
+  --b-radius: 0.45em;
+
+  border-width: var(--b-width);
+  border-style: var(--b-style);
+  border-color: var(--b-color);
+  border-radius: var(--b-radius);
+  background-color: transparent;
+  color: var(--c-gray-500);
+  color-scheme: dark;
+  width: 100%;
+  padding-block: 0.75em;
+  padding-inline: 0.75em;
+  line-height: 1;
+
+  &::placeholder {
+    color: var(--c-gray-200);
+  }
+}
+
 // styles
 .layout {
   --gap: 1rem;
 
   display: grid;
   grid-template-columns: 1fr min(#{$xxl}, 100% - var(--gap) * 2) 1fr;
+  grid-template-rows: auto 1fr;
   grid-column-gap: var(--gap);
+  align-items: stretch;
 }
 
 .layout > * {

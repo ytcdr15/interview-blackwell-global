@@ -1,0 +1,70 @@
+.dialog {
+  --timing: 200ms;
+  --y: 7%;
+  --bg-color: var(--c-white);
+  --bor-color: hsla(0, 0%, 17%, 0.375);
+  --pad-inline: 1.5rem;
+  --pad-block: 1.5rem 2rem;
+  --min-width: 50ch;
+  --max-width: auto;
+
+  background-color: var(--bg-color);
+  margin: auto;
+  padding-block: var(--pad-block);
+  padding-inline: var(--pad-inline);
+  min-width: min(var(--min-width, 50ch), calc(100% - var(--pad-inline)));
+  max-width: var(--max-width);
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: 1.25rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--bor-color);
+  border-radius: 0.45rem;
+  overscroll-behavior: auto contain;
+
+  transform: translateY(calc(var(--y) * -1));
+  opacity: 0;
+  transition:
+    opacity var(--timing) ease,
+    transform var(--timing) ease,
+    overlay var(--timing) ease allow-discrete,
+    display var(--timing) ease allow-discrete;
+
+  &[open] {
+    /* open state */
+    transform: translateY(0);
+    opacity: 1;
+    /* assign display flex only when in open state */
+    /* prevent overriding browser default display: none */
+    display: flex;
+  }
+
+  &::backdrop {
+    background: hsla(0, 0%, 0%, 0.6);
+  }
+
+  header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  header > button {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1;
+  }
+}
+
+@starting-style {
+  .dialog[open] {
+    transform: translateY(var(--y));
+    opacity: 0;
+  }
+}

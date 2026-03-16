@@ -11,7 +11,7 @@ export function EnquiryForm() {
           <input
             type='text'
             name='name'
-            className={styles.input}
+            className={clsx('input', styles.input)}
             placeholder='Name'
             required
           />
@@ -20,7 +20,7 @@ export function EnquiryForm() {
           <input
             type='email'
             name='email'
-            className={styles.input}
+            className={clsx('input', styles.input)}
             placeholder='Email'
             required
           />
@@ -29,7 +29,7 @@ export function EnquiryForm() {
           <input
             type='tel'
             name='mobile-no'
-            className={styles.input}
+            className={clsx('input', styles.input)}
             placeholder='Mobile No.'
             required
           />
@@ -38,7 +38,7 @@ export function EnquiryForm() {
           <select
             name='country-residence'
             defaultValue=''
-            className={styles.input}
+            className={clsx('input', styles.input)}
           >
             <option value='' disabled>
               Country of Residence
@@ -53,7 +53,7 @@ export function EnquiryForm() {
           <textarea
             name='message'
             rows={8}
-            className={styles.input}
+            className={clsx('input', styles.input)}
             placeholder='Enter your message here'
           ></textarea>
         </label>
