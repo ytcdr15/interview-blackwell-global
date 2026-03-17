@@ -11,7 +11,7 @@ import {
 import { X } from 'lucide-react';
 import styles from './modal.module.scss';
 import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Props = {
   title?: string;
@@ -20,6 +20,7 @@ type Props = {
 
 export function Modal({ title, minWidth, className, children }: Props) {
   const router = useRouter();
+  const pathname = usePathname();
   const dialogRef = useRef<ComponentRef<'dialog'>>(null);
 
   const cssStyles: CSSProperties = useMemo(
@@ -35,13 +36,17 @@ export function Modal({ title, minWidth, className, children }: Props) {
     () => !('closedBy' in HTMLDialogElement.prototype),
     []
   );
-  const showHeader = useMemo(() => title || notSupportLightDismiss, [title]);
+  const showHeader = useMemo(
+    () => title || notSupportLightDismiss,
+    [title, notSupportLightDismiss]
+  );
+  const isNotHome = useMemo(() => pathname !== '/', [pathname]);
 
   useEffect(() => {
-    if (!dialogRef.current?.open) {
+    if (isNotHome && !dialogRef.current?.open) {
       dialogRef.current?.showModal();
     }
-  }, []);
+  }, [isNotHome]);
 
   const onClose = () => {
     router.back();

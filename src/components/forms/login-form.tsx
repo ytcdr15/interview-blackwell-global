@@ -1,24 +1,51 @@
 'use client';
 
-import styles from './login-form.module.scss';
-import clsx from 'clsx';
 import { loginAction } from '@/actions/auth';
-import { useActionState } from 'react';
+import clsx from 'clsx';
+import { X } from 'lucide-react';
+import Link from 'next/link';
+import { useActionState, useEffect, useState } from 'react';
+import { GoogleSignInButton } from '../ui/google-sign-in-button';
+import { Loading } from '../ui/loading';
 import { ValidationMessage } from '../ui/validation-message';
+import styles from './login-form.module.scss';
 
 export function LoginForm() {
   const [state, formAction, submitting] = useActionState(loginAction, {});
+  const [messageVisible, setMessageVisible] = useState(false);
+
+  useEffect(() => {
+    if (state.message) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setMessageVisible(true);
+    }
+  }, [state]);
 
   return (
     <>
       <p>
-        Don't have an account?{' '}
-        <a href='/register' className={styles.link}>
+        Don&apos;t have an account?{' '}
+        <Link href='/register' replace={true} className={styles.link}>
           Sign Up
-        </a>
+        </Link>
       </p>
-      <form action={formAction} className={styles.form}>
-        {state.message && <p aria-live='polite'>{state.message}</p>}
+      <form
+        action={formAction}
+        onSubmit={() => setMessageVisible(false)}
+        className={styles.form}
+      >
+        {messageVisible && state.message && (
+          <div className={styles.message}>
+            <p aria-live='polite'>{state.message}</p>
+            <button
+              type='button'
+              className='button-only'
+              onClick={() => setMessageVisible(false)}
+            >
+              <X size={22} />
+            </button>
+          </div>
+        )}
         <label className={styles.field}>
           <span>Email</span>
           <input
@@ -46,16 +73,12 @@ export function LoginForm() {
           className={clsx('button', styles.button)}
           disabled={submitting}
         >
-          Login
+          {submitting ? <Loading /> : 'Login'}
         </button>
         <div className={styles.divider}>
           <span>Or</span>
         </div>
-        <button
-          type='button'
-          className={clsx('button', styles.provider)}
-          disabled={submitting}
-        >
+        <GoogleSignInButton>
           <svg
             strokeLinejoin='round'
             style={{ width: '20', height: '20', color: 'currentColor' }}
@@ -81,7 +104,7 @@ export function LoginForm() {
             ></path>
           </svg>
           Login with Google
-        </button>
+        </GoogleSignInButton>
       </form>
     </>
   );

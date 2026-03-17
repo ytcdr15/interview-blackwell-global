@@ -1,23 +1,67 @@
 'use client';
 
 import { registerAction } from '@/actions/auth';
-import styles from './register-form.module.scss';
 import clsx from 'clsx';
-import { useActionState } from 'react';
+import { X } from 'lucide-react';
+import Link from 'next/link';
+import { useActionState, useEffect, useState } from 'react';
+import { Loading } from '../ui/loading';
 import { ValidationMessage } from '../ui/validation-message';
+import styles from './register-form.module.scss';
+import { GoogleSignInButton } from '../ui/google-sign-in-button';
 
 export function RegisterForm() {
   const [state, formAction, submitting] = useActionState(registerAction, {});
+  const [messageVisible, setMessageVisible] = useState(false);
+
+  useEffect(() => {
+    if (!state.valid && state.message) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setMessageVisible(true);
+    }
+  }, [state]);
+
+  // on valid registration
+  // show welcome message
+  if (state.valid) {
+    return (
+      <>
+        <p>
+          Hi {state.values?.firstName}, welcome to Blackwell, please verify your
+          email immediately.
+        </p>
+        <Link href='/login' replace={true} className={styles.link}>
+          Login directly
+        </Link>
+      </>
+    );
+  }
 
   return (
     <>
       <p>
         Already have an account?{' '}
-        <a href='/login' className={styles.link}>
+        <Link href='/login' replace={true} className={styles.link}>
           Sign In
-        </a>
+        </Link>
       </p>
-      <form action={formAction} className={styles.form}>
+      <form
+        action={formAction}
+        onSubmit={() => setMessageVisible(false)}
+        className={styles.form}
+      >
+        {messageVisible && state.message && (
+          <div className={styles.message}>
+            <p aria-live='polite'>{state.message}</p>
+            <button
+              type='button'
+              className='button-only'
+              onClick={() => setMessageVisible(false)}
+            >
+              <X size={22} />
+            </button>
+          </div>
+        )}
         <label className={styles.field}>
           <span>First Name</span>
           <input
@@ -109,17 +153,13 @@ export function RegisterForm() {
           className={clsx('button', styles.button)}
           disabled={submitting}
         >
-          Register
+          {submitting ? <Loading /> : 'Register'}
         </button>
         <div className={styles.oauth}>
           <div className={styles.divider}>
             <span>Or</span>
           </div>
-          <button
-            type='button'
-            className={clsx('button', styles.provider)}
-            disabled={submitting}
-          >
+          <GoogleSignInButton>
             <svg
               strokeLinejoin='round'
               style={{ width: '20', height: '20', color: 'currentColor' }}
@@ -145,7 +185,7 @@ export function RegisterForm() {
               ></path>
             </svg>
             Continue with Google
-          </button>
+          </GoogleSignInButton>
         </div>
       </form>
     </>

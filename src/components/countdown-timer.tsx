@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './countdown-timer.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import NumberFlow, { Format } from '@number-flow/react';
 
 type Props = {
@@ -9,16 +9,19 @@ type Props = {
 };
 
 export function CountdownTimer({ countdownDate }: Props) {
-  const format: Format = { minimumIntegerDigits: 2, useGrouping: false };
-
   const [timer, setTimer] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
+  const format: Format = useMemo(
+    () => ({ minimumIntegerDigits: 2, useGrouping: false }),
+    []
+  );
 
   useEffect(() => {
+    // eslint-disable-next-line prefer-const
     let interval: ReturnType<typeof setInterval> | undefined;
 
     const updateTimer = () => {

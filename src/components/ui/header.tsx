@@ -1,13 +1,12 @@
-import styles from './header.module.scss';
 import clsx from 'clsx';
-import { RegisterButton } from './register-button';
-import { CircleUserRound, Menu } from 'lucide-react';
-import { PromotionCountdown } from '../promotion-countdown';
+import { Menu } from 'lucide-react';
 import { Annoucement } from '../annoucement';
-import Link from 'next/link';
+import { PromotionCountdown } from '../promotion-countdown';
+import { Account } from './account';
+import styles from './header.module.scss';
 import { Logo } from './logo';
 
-export default function Header() {
+export default async function Header() {
   return (
     <div className={clsx(styles.top, 'full-width')}>
       <header className={clsx(styles.header, 'span')}>
@@ -16,12 +15,7 @@ export default function Header() {
           <div className={styles.countdown}>
             <PromotionCountdown />
           </div>
-          <div className={styles.account}>
-            <RegisterButton variant='pill' />
-            <Link href='/login' className='button-only'>
-              <CircleUserRound color='#fff' size={26} />
-            </Link>
-          </div>
+          <Account className={styles.account} />
           <div className={styles.menu}>
             <button type='button' className='button-only'>
               <Menu color='#fff' size={26} />

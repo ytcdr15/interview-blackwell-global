@@ -108,7 +108,8 @@ body {
   line-height: normal;
   transition: background-color 200ms;
 
-  &[type='button'] {
+  &[type='button'],
+  &[type='submit'] {
     cursor: pointer;
   }
 

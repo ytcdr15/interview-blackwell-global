@@ -56,3 +56,25 @@
 
   color: var(--c-text);
 }
+
+.message {
+  align-self: stretch;
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  color: var(--c-orange);
+  border-width: 2px;
+  border-style: solid;
+  border-color: currentColor;
+  border-radius: 0.45em;
+
+  p {
+    flex-grow: 1;
+  }
+
+  button {
+    flex-shrink: 0;
+  }
+}
