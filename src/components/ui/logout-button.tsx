@@ -1,21 +1,17 @@
 'use client';
 
 import { logoutAction } from '@/actions/auth';
-import { useActionState } from 'react';
-import styles from './login-button.module.scss';
-import clsx from 'clsx';
+import { ComponentPropsWithoutRef, useActionState } from 'react';
 import { Loading } from './loading';
 
-export function LogoutButton() {
+type Props = ComponentPropsWithoutRef<'button'>;
+
+export function LogoutButton({ className }: Props) {
   const [, formAction, submitting] = useActionState(logoutAction, null);
 
   return (
     <form action={formAction}>
-      <button
-        type='submit'
-        className={clsx('button', styles.button)}
-        disabled={submitting}
-      >
+      <button type='submit' className={className} disabled={submitting}>
         {submitting ? <Loading /> : 'Logout'}
       </button>
     </form>

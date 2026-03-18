@@ -1,0 +1,9 @@
+.button {
+  display: none;
+}
+
+@include mq-lg {
+  .button {
+    display: block;
+  }
+}

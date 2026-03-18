@@ -1,0 +1,116 @@
+{
+  "general": {
+    "register-now": "Register Now",
+    "hi-user": "Hi, {user}"
+  },
+  "cta": {
+    "copy-trading": "Copy Trading",
+    "with-bw-invest": "with <span>Blackwell Invest</span>",
+    "choose-and-trade": "Choose & Trade",
+    "rtg-strategies": "Read-To-Go Strategies",
+    "browse-and-copy": "Browse and copy hundreds of investment strategies developed by master traders! Whether you are a pro or beginner, you can now trade quicker and more confidently",
+    "list": {
+      "forex": "Forex",
+      "p-metals": "Precious Metals",
+      "oil": "Oil",
+      "indices": "Indices"
+    },
+    "be-prudent": "When you invest, your capital is at risk. Be prudent.",
+    "fast-matching": "Fast Matching",
+    "zero-in-on": "Zero in on your ideal Master effortlessly. Sort by performance and drawdown levels or discover opportunities from new signals with our smart filters. Still can't decide? Simply head over to Spotlight for quality signals curated by us.",
+    "features": {
+      "spotlight": "Spotlight",
+      "top-startegies": "Top Startegies",
+      "low-drawdown": "Low Drawdown",
+      "medium-drawdown": "Medium Drawdown",
+      "high-drawdown": "High Drawdown",
+      "new-startegies": "New Startegies"
+    },
+    "easy-analysis": "Easy Analysis",
+    "instant-clarity": "Instant clarity on the Masters&apos; profile. Get a snapshot of their trade history, profitability, risk, and portfolio all in one place."
+  },
+  "guide": {
+    "trade-like": "Trade Like a Pro in Minutes",
+    "install-app": "Install our app, \"Blackwell Invest\"",
+    "choose-signal": "Choose a signal Master and click \"Copy\"",
+    "set-trade": "Set your trade size preferences",
+    "click-agree-copy": "Click \"Agree and Copy\""
+  },
+  "link-account": {
+    "how-to-link": "How to Link MT4 Account",
+    "install-app": "Install our app, \"Blackwell Invest\"",
+    "login-create": "Login OR create a new account",
+    "click-account": "Click \"Account\"",
+    "click-link-account": "Click \"Link an account\"",
+    "select-server": "Select \"BlackwellGlobalAsia-Live\" server",
+    "fill-in": "Fill in your Blackwell Global trading account OR create a new account",
+    "click-copy-trade": "Click \"Copy Trades\"",
+    "click-done": "Click \"Done\""
+  },
+  "choose-us": {
+    "title": "Why Choose Us?",
+    "r1": "Regulated",
+    "d1": "The copy trading platform is regulated. Our technology partner is regulated. And so are we, as a brokerage. We operate under strict compliance because your trust and peace of mind are everything.",
+    "r2": "0 Commissions",
+    "d2": "When investing, the small margins matter. Blackwell Invest offers 0 commissions investing, and 0 cost to install our app.",
+    "r3": "User-friendly",
+    "d3": "With an intuitive interface, easy trade execution, and hassle-free management, copying top traders has never been simpler. Trade smarter, not harder!",
+    "r4": "Tier 1 liquidity",
+    "d4": "Blackwell Invest sources the best liquidity to provide a deep product range and broad market access. Fast order execution and transparent pricing."
+  },
+  "navigate-app": {
+    "title": "Navigate Our App in 5 Clicks",
+    "s1": "Discover",
+    "d1": "Explore all the investment Masters available on Blackwell Invest. Dive into their profiles and analyse their profitability at a glance.",
+    "s2": "Activity",
+    "d2": "See the past trades made by the signals you are copying from the last 30 days or track their open positions. Monitor their strategy, and make informed decisions with timely updates of the trades shaping your portfolio.",
+    "s3": "Trade",
+    "d3": "Seamlessly trade oil CFDs, indices, and currency pairs with ease.",
+    "s4": "Positions",
+    "d4": "Easily track the status of all your trades and monitor your account metrics in real-time.",
+    "s5": "Account",
+    "d5": "Access detailed information about your trading account, monitor copier drawdown levels, assess your profitability, and keep track of your trade performance - all in one place!"
+  },
+  "enquiry-form": {
+    "title": "Enquire Now",
+    "name": "Name",
+    "email": "Email",
+    "mobile-no": "Mobile No.",
+    "country-residence": "Country of Residence",
+    "enter-message": "Enter your message here",
+    "submit": "Submit"
+  },
+  "promotion": {
+    "label": "Promotion\n Ends In"
+  },
+  "timer": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "annoucement": {
+    "sample": "Notice: Fraudulent Cloned Website and App Download. <link>Learn More >></link>"
+  },
+  "form": {
+    "fields": {
+      "first-name": "First Name",
+      "last-name": "Last Name",
+      "email": "Email Address",
+      "mobile-no": "Mobile No.",
+      "country": "Country",
+      "password": "Password",
+      "confirm-password": "Confirm Password"
+    },
+    "please-enter": "Enter your {field}",
+    "register": "Register",
+    "login": "Login",
+    "or": "Or",
+    "welcome-message": "Hi {name}, welcome to Blackwell, please verify your email immediately.",
+    "login-directly": "Login directly",
+    "already-sign-in": "Already have an account? <link>Sign In</link>",
+    "no-account-signup": "Don't have an account? <link>Sign Up</link>",
+    "continue-google": "Continue with Google",
+    "login-google": "Login with Google"
+  }
+}

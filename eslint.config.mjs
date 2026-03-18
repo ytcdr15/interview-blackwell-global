@@ -16,6 +16,28 @@ const eslintConfig = defineConfig([
     'next-env.d.ts',
     'migrations/**',
   ]),
+  {
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          name: 'next/link',
+          message: 'Please import from `@/i18n/navigation` instead.',
+          importNames: ['default'],
+        },
+        {
+          name: 'next/navigation',
+          message: 'Please import from `@/i18n/navigation` instead.',
+          importNames: [
+            'redirect',
+            'permanentRedirect',
+            'useRouter',
+            'usePathname',
+          ],
+        },
+      ],
+    },
+  },
 ]);
 
 export default eslintConfig;

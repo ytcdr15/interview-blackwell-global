@@ -3,12 +3,15 @@
 import styles from './countdown-timer.module.scss';
 import { useState, useEffect, useMemo } from 'react';
 import NumberFlow, { Format } from '@number-flow/react';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   countdownDate: Date | string;
 };
 
 export function CountdownTimer({ countdownDate }: Props) {
+  const t = useTranslations('timer');
+
   const [timer, setTimer] = useState({
     days: 0,
     hours: 0,
@@ -60,7 +63,7 @@ export function CountdownTimer({ countdownDate }: Props) {
           format={format}
           value={timer.days}
         />
-        <small className={styles.unit}>Days</small>
+        <small className={styles.unit}>{t('days')}</small>
       </div>
       <div className={styles.dot} aria-hidden={true}>
         :
@@ -71,7 +74,7 @@ export function CountdownTimer({ countdownDate }: Props) {
           format={format}
           value={timer.hours}
         />
-        <small className={styles.unit}>Hours</small>
+        <small className={styles.unit}>{t('hours')}</small>
       </div>
       <div className={styles.dot} aria-hidden={true}>
         :
@@ -82,7 +85,7 @@ export function CountdownTimer({ countdownDate }: Props) {
           format={format}
           value={timer.minutes}
         />
-        <small className={styles.unit}>Minutes</small>
+        <small className={styles.unit}>{t('minutes')}</small>
       </div>
       <div className={styles.dot} aria-hidden={true}>
         :
@@ -93,7 +96,7 @@ export function CountdownTimer({ countdownDate }: Props) {
           format={format}
           value={timer.seconds}
         />
-        <small className={styles.unit}>Seconds</small>
+        <small className={styles.unit}>{t('seconds')}</small>
       </div>
     </div>
   );

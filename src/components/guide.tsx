@@ -22,17 +22,30 @@ import {
   TargetAndTransition,
   Transition,
 } from 'motion/react';
+import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function Guide() {
-  const initial: TargetAndTransition = { opacity: 0, y: -24 };
-  const animate: TargetAndTransition = { opacity: 1, y: 0 };
-  const exit: TargetAndTransition = { opacity: 0, y: -24 };
-  const transition: Transition = { duration: 0.2, ease: easeOut };
+  const t = useTranslations('guide');
+
+  const initial: TargetAndTransition = useMemo(
+    () => ({ opacity: 0, y: -24 }),
+    []
+  );
+  const animate: TargetAndTransition = useMemo(
+    () => ({ opacity: 1, y: 0 }),
+    []
+  );
+  const exit: TargetAndTransition = useMemo(() => ({ opacity: 0, y: -24 }), []);
+  const transition: Transition = useMemo(
+    () => ({ duration: 0.2, ease: easeOut }),
+    []
+  );
 
   return (
     <section className={clsx(styles.section, 'full-width')}>
       <div className={styles.content}>
-        <SectionTitle>Trade Like a Pro in Minutes</SectionTitle>
+        <SectionTitle>{t('trade-like')}</SectionTitle>
         <div className={styles.accordion}>
           <Disclosure as='div' className={styles.disclosure}>
             {({ open }) => (
@@ -41,9 +54,7 @@ export function Guide() {
                   className={clsx(styles.disbutton, 'button-only')}
                 >
                   <span className={styles.marker}>1</span>
-                  <span className={styles.text}>
-                    Install our app, &quot;Blackwell Invest&quot;
-                  </span>
+                  <span className={styles.text}>{t('install-app')}</span>
                 </DisclosureButton>
                 <AnimatePresence>
                   {open && (
@@ -76,9 +87,7 @@ export function Guide() {
                   className={clsx(styles.disbutton, 'button-only')}
                 >
                   <span className={styles.marker}>2</span>
-                  <span className={styles.text}>
-                    Choose a signal Master and click &quot;Copy&quot;
-                  </span>
+                  <span className={styles.text}>{t('choose-signal')}</span>
                 </DisclosureButton>
                 <AnimatePresence>
                   {open && (
@@ -111,9 +120,7 @@ export function Guide() {
                   className={clsx(styles.disbutton, 'button-only')}
                 >
                   <span className={styles.marker}>3</span>
-                  <span className={styles.text}>
-                    Set your trade size preferences
-                  </span>
+                  <span className={styles.text}>{t('set-trade')}</span>
                 </DisclosureButton>
                 <AnimatePresence>
                   {open && (
@@ -146,9 +153,7 @@ export function Guide() {
                   className={clsx(styles.disbutton, 'button-only')}
                 >
                   <span className={styles.marker}>4</span>
-                  <span className={styles.text}>
-                    Click &quot;Agree and Copy&quot;
-                  </span>
+                  <span className={styles.text}>{t('click-agree-copy')}</span>
                 </DisclosureButton>
                 <AnimatePresence>
                   {open && (
@@ -186,9 +191,7 @@ export function Guide() {
                   })}
                 >
                   <span className={styles.marker}>1</span>
-                  <span className={styles.text}>
-                    Install our app, &quot;Blackwell Invest&quot;
-                  </span>
+                  <span className={styles.text}>{t('install-app')}</span>
                 </button>
               )}
             </Tab>
@@ -201,9 +204,7 @@ export function Guide() {
                   })}
                 >
                   <span className={styles.marker}>2</span>
-                  <span className={styles.text}>
-                    Choose a signal Master and click &quot;Copy&quot;
-                  </span>
+                  <span className={styles.text}>{t('choose-signal')}</span>
                 </button>
               )}
             </Tab>
@@ -216,9 +217,7 @@ export function Guide() {
                   })}
                 >
                   <span className={styles.marker}>3</span>
-                  <span className={styles.text}>
-                    Set your trade size preferences
-                  </span>
+                  <span className={styles.text}>{t('set-trade')}</span>
                 </button>
               )}
             </Tab>
@@ -231,9 +230,7 @@ export function Guide() {
                   })}
                 >
                   <span className={styles.marker}>4</span>
-                  <span className={styles.text}>
-                    Click &quot;Agree and Copy&quot;
-                  </span>
+                  <span className={styles.text}>{t('click-agree-copy')}</span>
                 </button>
               )}
             </Tab>

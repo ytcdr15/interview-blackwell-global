@@ -1,0 +1,22 @@
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.menu {
+  --spacing: 0.75rem;
+
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1rem;
+
+  a {
+    color: currentColor;
+  }
+}
+
+.logout {
+  text-decoration: underline !important;
+}

@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { Menu } from 'lucide-react';
 import { Annoucement } from '../annoucement';
 import { PromotionCountdown } from '../promotion-countdown';
 import { Account } from './account';
 import styles from './header.module.scss';
 import { Logo } from './logo';
+import { MenuToggle } from './menu-toggle';
 
 export default async function Header() {
   return (
@@ -16,11 +16,7 @@ export default async function Header() {
             <PromotionCountdown />
           </div>
           <Account className={styles.account} />
-          <div className={styles.menu}>
-            <button type='button' className='button-only'>
-              <Menu color='#fff' size={26} />
-            </button>
-          </div>
+          <MenuToggle className={styles.menu} />
         </div>
       </header>
       <Annoucement />

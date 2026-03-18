@@ -1,0 +1,72 @@
+.sidebar {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 11;
+  color: var(--c-white);
+
+  > * {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &[data-open='true'] {
+    .backdrop {
+      display: block;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .aside {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    @include mq-lg {
+      .aside {
+        transition: none !important;
+        transform: translateX(-100%) !important;
+        visibility: hidden !important;
+      }
+
+      .backdrop {
+        display: none !important;
+        visibility: hidden !important;
+      }
+    }
+  }
+}
+
+.backdrop {
+  background-color: hsla(0, 0%, 0%, 0.5);
+  display: none;
+  visibility: hidden;
+}
+
+.aside {
+  background: var(--c-bg);
+  border-right: 2px solid var(--c-white);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.75rem;
+  padding: 2rem 1rem;
+
+  width: min(100vw, 25ch);
+  width: min(100dvw, 25ch);
+  height: 100vh;
+  height: 100dvh;
+  transition-property: transform, visibility, display;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
+  transform: translateX(-100%);
+  visibility: hidden;
+  pointer-events: all;
+}
+
+.locale {
+  margin-top: auto;
+  align-self: flex-start;
+}

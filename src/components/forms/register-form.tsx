@@ -3,14 +3,17 @@
 import { registerAction } from '@/actions/auth';
 import clsx from 'clsx';
 import { X } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useActionState, useEffect, useState } from 'react';
 import { Loading } from '../ui/loading';
 import { ValidationMessage } from '../ui/validation-message';
 import styles from './register-form.module.scss';
 import { GoogleSignInButton } from '../ui/google-sign-in-button';
+import { useTranslations } from 'next-intl';
 
 export function RegisterForm() {
+  const t = useTranslations('form');
+
   const [state, formAction, submitting] = useActionState(registerAction, {});
   const [messageVisible, setMessageVisible] = useState(false);
 
@@ -27,11 +30,12 @@ export function RegisterForm() {
     return (
       <>
         <p>
-          Hi {state.values?.firstName}, welcome to Blackwell, please verify your
-          email immediately.
+          {t('welcome-message', {
+            name: state.values?.firstName || '',
+          })}
         </p>
         <Link href='/login' replace={true} className={styles.link}>
-          Login directly
+          {t('login-directly')}
         </Link>
       </>
     );
@@ -40,10 +44,13 @@ export function RegisterForm() {
   return (
     <>
       <p>
-        Already have an account?{' '}
-        <Link href='/login' replace={true} className={styles.link}>
-          Sign In
-        </Link>
+        {t.rich('already-sign-in', {
+          link: (chunks) => (
+            <Link href='/login' replace={true} className={styles.link}>
+              {chunks}
+            </Link>
+          ),
+        })}
       </p>
       <form
         action={formAction}
@@ -63,58 +70,58 @@ export function RegisterForm() {
           </div>
         )}
         <label className={styles.field}>
-          <span>First Name</span>
+          <span>{t('fields.first-name')}</span>
           <input
             type='text'
             name='firstName'
             defaultValue={state.values?.firstName}
             className='input'
-            placeholder='Enter your first name'
+            placeholder={t('please-enter', { field: t('fields.first-name') })}
           />
           <ValidationMessage errors={state.errors?.firstName} />
         </label>
         <label className={styles.field}>
-          <span>Last Name</span>
+          <span>{t('fields.last-name')}</span>
           <input
             type='text'
             name='lastName'
             defaultValue={state.values?.lastName}
             className='input'
-            placeholder='Enter your last name'
+            placeholder={t('please-enter', { field: t('fields.last-name') })}
           />
           <ValidationMessage errors={state.errors?.lastName} />
         </label>
         <label className={clsx(styles.field, 'span')}>
-          <span>Email</span>
+          <span>{t('fields.email')}</span>
           <input
             type='email'
             name='email'
             defaultValue={state.values?.email}
             className='input'
-            placeholder='Enter your email addresss'
+            placeholder={t('please-enter', { field: t('fields.email') })}
           />
           <ValidationMessage errors={state.errors?.email} />
         </label>
         <label className={styles.field}>
-          <span>Mobile No.</span>
+          <span>{t('fields.mobile-no')}</span>
           <input
             type='tel'
             name='mobile'
             defaultValue={state.values?.mobileNo}
             className='input'
-            placeholder='Enter your mobile no.'
+            placeholder={t('please-enter', { field: t('fields.mobile-no') })}
           />
           <ValidationMessage errors={state.errors?.mobileNo} />
         </label>
         <label className={styles.field}>
-          <span>Country</span>
+          <span>{t('fields.country')}</span>
           <select
             name='country'
             defaultValue={state.values?.country}
             className='input'
           >
             <option value='' disabled>
-              Country
+              {t('fields.country')}
             </option>
             <option value='malaysia'>Malaysia</option>
             <option value='vietnam'>Vietnam</option>
@@ -124,24 +131,26 @@ export function RegisterForm() {
           <ValidationMessage errors={state.errors?.country} />
         </label>
         <label className={styles.field}>
-          <span>Password</span>
+          <span>{t('fields.password')}</span>
           <input
             type='password'
             name='password'
             defaultValue={state.values?.password}
             className='input'
-            placeholder='Enter your password'
+            placeholder={t('please-enter', { field: t('fields.password') })}
           />
           <ValidationMessage errors={state.errors?.password} showAll={true} />
         </label>
         <label className={styles.field}>
-          <span>Confirm Password</span>
+          <span>{t('fields.confirm-password')}</span>
           <input
             type='password'
             name='confirmPassword'
             defaultValue={state.values?.confirmPassword}
             className='input'
-            placeholder='Enter your confirm password'
+            placeholder={t('please-enter', {
+              field: t('fields.confirm-password'),
+            })}
           />
           <ValidationMessage
             errors={state.errors?.confirmPassword}
@@ -153,11 +162,11 @@ export function RegisterForm() {
           className={clsx('button', styles.button)}
           disabled={submitting}
         >
-          {submitting ? <Loading /> : 'Register'}
+          {submitting ? <Loading /> : t('register')}
         </button>
         <div className={styles.oauth}>
           <div className={styles.divider}>
-            <span>Or</span>
+            <span>{t('or')}</span>
           </div>
           <GoogleSignInButton>
             <svg
@@ -184,7 +193,7 @@ export function RegisterForm() {
                 fill='#EA4335'
               ></path>
             </svg>
-            Continue with Google
+            {t('continue-google')}
           </GoogleSignInButton>
         </div>
       </form>

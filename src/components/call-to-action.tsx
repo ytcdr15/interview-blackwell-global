@@ -1,19 +1,22 @@
-import Image from 'next/image';
-import { RegisterButton } from './ui/register-button';
-import styles from './call-to-action.module.scss';
 import clsx from 'clsx';
-import { SectionTitle } from './ui/section-title';
 import * as motion from 'motion/react-client';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import styles from './call-to-action.module.scss';
+import { RegisterButton } from './ui/register-button';
+import { SectionTitle } from './ui/section-title';
+
+const FEATURES = [
+  'spotlight',
+  'top-startegies',
+  'low-drawdown',
+  'medium-drawdown',
+  'high-drawdown',
+  'new-startegies',
+] as const;
 
 export function CallToAction() {
-  const features = [
-    'Spotlight',
-    'Top Startegies',
-    'Low Drawdown',
-    'Medium Drawdown',
-    'High Drawdown',
-    'New Startegies',
-  ];
+  const t = useTranslations('cta');
 
   return (
     <div className={styles.main}>
@@ -40,9 +43,11 @@ export function CallToAction() {
           width={180}
           height={170}
         />
-        <h1>Copy Trading</h1>
+        <h1>{t('copy-trading')}</h1>
         <h2>
-          with <span>Blackwell Invest</span>
+          {t.rich('with-bw-invest', {
+            span: (chunks) => <span>{chunks}</span>,
+          })}
         </h2>
         <div className={styles.buttons}>
           <button type='button' className='button-only'>
@@ -64,30 +69,25 @@ export function CallToAction() {
         </div>
       </section>
       <section className={styles.cta}>
-        <h1>Choose & Trade</h1>
-        <h2>Read-To-Go Strategies</h2>
-        <p>
-          Browse and copy hundreds of investment strategies developed by master
-          traders! Whether you are a pro or beginner, you can now trade quicker
-          and more confidently
-        </p>
+        <h1>{t('choose-and-trade')}</h1>
+        <h2>{t('rtg-strategies')}</h2>
+        <p>{t('browse-and-copy')}</p>
         <ol className={styles.tags}>
-          <li className={styles.tag}>Forex</li>
-          <li className={clsx(styles.tag, styles.orange)}>Precious Metals</li>
-          <li className={clsx(styles.tag, styles.red)}>Oil</li>
-          <li className={clsx(styles.tag, styles.secondary)}>Indices</li>
+          <li className={styles.tag}>{t('list.forex')}</li>
+          <li className={clsx(styles.tag, styles.orange)}>
+            {t('list.p-metals')}
+          </li>
+          <li className={clsx(styles.tag, styles.red)}>{t('list.oil')}</li>
+          <li className={clsx(styles.tag, styles.secondary)}>
+            {t('list.indices')}
+          </li>
         </ol>
         <RegisterButton />
-        <small>When you invest, your capital is at risk. Be prudent.</small>
+        <small>{t('be-prudent')}</small>
       </section>
       <section className={styles.matching}>
-        <SectionTitle>Fast Matching</SectionTitle>
-        <p className={styles.desc}>
-          Zero in on your ideal Master effortlessly. Sort by performance and
-          drawdown levels or discover opportunities from new signals with our
-          smart filters. Still can&apos;t decide? Simply head over to Spotlight
-          for quality signals curated by us.
-        </p>
+        <SectionTitle>{t('fast-matching')}</SectionTitle>
+        <p className={styles.desc}>{t('zero-in-on')}</p>
         <div className={styles.features}>
           <div className={styles.video}>
             <video
@@ -114,7 +114,7 @@ export function CallToAction() {
             whileInView='visible'
             viewport={{ once: true, amount: 0.2 }}
           >
-            {features.map((feature) => (
+            {FEATURES.map((feature) => (
               <motion.li
                 key={feature}
                 variants={{
@@ -126,18 +126,15 @@ export function CallToAction() {
                   },
                 }}
               >
-                {feature}
+                {t(`features.${feature}`)}
               </motion.li>
             ))}
           </motion.ul>
         </div>
       </section>
       <section className={styles.analysis}>
-        <SectionTitle>Easy Analysis</SectionTitle>
-        <p className={styles.desc}>
-          Instant clarity on the Masters&apos; profile. Get a snapshot of their
-          trade history, profitability, risk, and portfolio all in one place.
-        </p>
+        <SectionTitle>{t('easy-analysis')}</SectionTitle>
+        <p className={styles.desc}>{t('instant-clarity')}</p>
         <div className={styles.function}>
           <Image
             src='/images/mobile-2-69b3f197cdfb8.webp'

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write --ignore-path .gitignore .",
-    "migrate:db": "node ./migrator.mjs"
+    "migrate:db": "npx auth@latest migrate"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
@@ -20,6 +20,7 @@
     "lucide-react": "^0.577.0",
     "motion": "^12.36.0",
     "next": "16.1.6",
+    "next-intl": "^4.8.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "swiper": "^12.1.2",

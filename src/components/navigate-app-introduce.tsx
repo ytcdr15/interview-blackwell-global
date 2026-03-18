@@ -7,11 +7,14 @@ import { Fragment } from 'react/jsx-runtime';
 import clsx from 'clsx';
 import { SectionTitle } from './ui/section-title';
 import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 export function NavigateAppIntroduce() {
+  const t = useTranslations('navigate-app');
+
   return (
     <section className={styles.section}>
-      <SectionTitle>Navigate Our App in 5 Clicks</SectionTitle>
+      <SectionTitle>{t('title')}</SectionTitle>
       <TabGroup className={styles.group}>
         <TabList className={styles.tablist}>
           <Tab as={Fragment}>
@@ -148,12 +151,8 @@ export function NavigateAppIntroduce() {
         <TabPanels>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
-              <h2>Discover</h2>
-              <p>
-                Explore all the investment Masters available on Blackwell
-                Invest. Dive into their profiles and analyse their profitability
-                at a glance.
-              </p>
+              <h2>{t('s1')}</h2>
+              <p>{t('d1')}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -171,13 +170,8 @@ export function NavigateAppIntroduce() {
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
-              <h2>Activity</h2>
-              <p>
-                See the past trades made by the signals you are copying from the
-                last 30 days or track their open positions. Monitor their
-                strategy, and make informed decisions with timely updates of the
-                trades shaping your portfolio.
-              </p>
+              <h2>{t('s2')}</h2>
+              <p>{t('d2')}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -195,11 +189,8 @@ export function NavigateAppIntroduce() {
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
-              <h2>Trade</h2>
-              <p>
-                Seamlessly trade oil CFDs, indices, and currency pairs with
-                ease.
-              </p>
+              <h2>{t('s3')}</h2>
+              <p>{t('d3')}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -217,11 +208,8 @@ export function NavigateAppIntroduce() {
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
-              <h2>Positions</h2>
-              <p>
-                Easily track the status of all your trades and monitor your
-                account metrics in real-time.
-              </p>
+              <h2>{t('s4')}</h2>
+              <p>{t('d4')}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -239,12 +227,8 @@ export function NavigateAppIntroduce() {
           </TabPanel>
           <TabPanel className={styles.panel}>
             <div className={styles.desc}>
-              <h2>Account</h2>
-              <p>
-                Access detailed information about your trading account, monitor
-                copier drawdown levels, assess your profitability, and keep
-                track of your trade performance - all in one place!
-              </p>
+              <h2>{t('s5')}</h2>
+              <p>{t('d5')}</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}

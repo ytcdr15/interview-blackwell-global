@@ -18,7 +18,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  row-gap: 0.25rem;
+  row-gap: 0.4rem;
   justify-content: flex-start;
   align-items: stretch;
 }
@@ -34,6 +34,7 @@
   display: flex;
   align-items: center;
   text-align: center;
+  font-size: 1rem;
 
   &::before,
   &::after {

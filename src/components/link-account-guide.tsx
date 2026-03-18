@@ -1,19 +1,22 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import styles from './link-account-guide.module.scss';
-import { Navigation, A11y, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import { A11y, Autoplay, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import styles from './link-account-guide.module.scss';
 import { RegisterButton } from './ui/register-button';
 import { SectionTitle } from './ui/section-title';
 
 export function LinkAccountGuide() {
+  const t = useTranslations('link-account');
+
   return (
     <section className={styles.guide}>
-      <SectionTitle>How to Link MT4 Account</SectionTitle>
+      <SectionTitle>{t('how-to-link')}</SectionTitle>
       <Swiper
         className={styles.slides}
         modules={[Navigation, A11y, Autoplay]}
@@ -40,7 +43,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-1'
             />
-            <p>Install our app, &quot;Blackwell Invest&quot;</p>
+            <p>{t('install-app')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -51,7 +54,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-2'
             />
-            <p>Login OR create a new account</p>
+            <p>{t('login-create')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -62,7 +65,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-3'
             />
-            <p>Click &quot;Account&quot;</p>
+            <p>{t('click-account')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -73,7 +76,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-4'
             />
-            <p>Click &quot;Link an account&quot;</p>
+            <p>{t('click-link-account')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -84,7 +87,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-5'
             />
-            <p>Select &quot;BlackwellGlobalAsia-Live&quot; server</p>
+            <p>{t('select-server')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -95,10 +98,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-6'
             />
-            <p>
-              Fill in your Blackwell Global trading account OR create a new
-              account
-            </p>
+            <p>{t('fill-in')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -109,7 +109,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-7'
             />
-            <p>Click &quot;Copy Trades&quot;</p>
+            <p>{t('click-copy-trade')}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
@@ -120,7 +120,7 @@ export function LinkAccountGuide() {
               height={320}
               alt='step-8'
             />
-            <p>Click &quot;Done&quot;</p>
+            <p>{t('click-done')}</p>
           </div>
         </SwiperSlide>
       </Swiper>

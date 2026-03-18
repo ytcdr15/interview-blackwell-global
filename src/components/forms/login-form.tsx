@@ -3,14 +3,17 @@
 import { loginAction } from '@/actions/auth';
 import clsx from 'clsx';
 import { X } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useActionState, useEffect, useState } from 'react';
 import { GoogleSignInButton } from '../ui/google-sign-in-button';
 import { Loading } from '../ui/loading';
 import { ValidationMessage } from '../ui/validation-message';
 import styles from './login-form.module.scss';
+import { useTranslations } from 'next-intl';
 
 export function LoginForm() {
+  const t = useTranslations('form');
+
   const [state, formAction, submitting] = useActionState(loginAction, {});
   const [messageVisible, setMessageVisible] = useState(false);
 
@@ -24,10 +27,13 @@ export function LoginForm() {
   return (
     <>
       <p>
-        Don&apos;t have an account?{' '}
-        <Link href='/register' replace={true} className={styles.link}>
-          Sign Up
-        </Link>
+        {t.rich('no-account-signup', {
+          link: (chunks) => (
+            <Link href='/register' replace={true} className={styles.link}>
+              {chunks}
+            </Link>
+          ),
+        })}
       </p>
       <form
         action={formAction}
@@ -47,24 +53,24 @@ export function LoginForm() {
           </div>
         )}
         <label className={styles.field}>
-          <span>Email</span>
+          <span>{t('fields.email')}</span>
           <input
             type='email'
             name='email'
             defaultValue={state.values?.email}
             className='input'
-            placeholder='Enter your email addresss'
+            placeholder={t('please-enter', { field: t('fields.email') })}
           />
           <ValidationMessage errors={state.errors?.email} />
         </label>
         <label className={styles.field}>
-          <span>Password</span>
+          <span>{t('fields.password')}</span>
           <input
             type='password'
             name='password'
             defaultValue={state.values?.password}
             className='input'
-            placeholder='Enter your password'
+            placeholder={t('please-enter', { field: t('fields.password') })}
           />
           <ValidationMessage errors={state.errors?.password} />
         </label>
@@ -73,10 +79,10 @@ export function LoginForm() {
           className={clsx('button', styles.button)}
           disabled={submitting}
         >
-          {submitting ? <Loading /> : 'Login'}
+          {submitting ? <Loading /> : t('login')}
         </button>
         <div className={styles.divider}>
-          <span>Or</span>
+          <span>{t('or')}</span>
         </div>
         <GoogleSignInButton>
           <svg
@@ -103,7 +109,7 @@ export function LoginForm() {
               fill='#EA4335'
             ></path>
           </svg>
-          Login with Google
+          {t('login-google')}
         </GoogleSignInButton>
       </form>
     </>

@@ -11,7 +11,7 @@ import {
 import { X } from 'lucide-react';
 import styles from './modal.module.scss';
 import clsx from 'clsx';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 
 type Props = {
   title?: string;

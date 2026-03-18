@@ -1,4 +1,15 @@
+.account :is(button, a) {
+  flex-shrink: 0;
+}
+
 .name {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.button {
+  --bg-color: var(--c-orange);
+
+  text-transform: uppercase;
+  border-radius: 999px;
 }

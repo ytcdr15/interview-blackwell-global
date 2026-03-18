@@ -1,5 +1,6 @@
 'use server';
 
+import { redirect } from '@/i18n/navigation';
 import { auth } from '@/lib/auth';
 import {
   loginFormSchema,
@@ -8,8 +9,10 @@ import {
   RegisterFormType,
 } from '@/lib/schema';
 import { APIError } from 'better-auth';
+import { getLocale } from 'next-intl/server';
 import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
+// eslint-disable-next-line no-restricted-imports
+import { redirect as nextRedirect } from 'next/navigation';
 import * as z from 'zod';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70,7 +73,8 @@ export async function loginAction(
   }
 
   // redirect to main page
-  redirect('/');
+  const locale = await getLocale();
+  return redirect({ href: '/', locale });
 }
 
 export type RegisterActionState = BaseActionState<RegisterFormType>;
@@ -166,7 +170,8 @@ export async function logoutAction() {
 
   // after success
   // redirect to main page
-  redirect('/');
+  const locale = await getLocale();
+  return redirect({ href: '/', locale });
 }
 
 export async function googleSignInAction() {
@@ -175,13 +180,15 @@ export async function googleSignInAction() {
       provider: 'google',
     },
   });
+  const locale = await getLocale();
 
   // redirect to google sign in propmt
   if (response.redirect && response.url) {
-    redirect(response.url);
+    nextRedirect(response.url);
   }
 
   // otherwise
   // redirect to main page
-  redirect('/');
+
+  return redirect({ href: '/', locale });
 }
